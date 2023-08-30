@@ -37,9 +37,9 @@ void Game::run()
     const int targetFrameRate = 60;
     const double targetFrameTime = 1000.0 / targetFrameRate;
     Uint64 prevTime = getCurrentMillis();
-    Uint64 frameTime = NULL;
-    Uint64 frameEndTime = NULL;
-    int delayTime = NULL;
+    Uint64 frameTime = 0;
+    Uint64 frameEndTime = 0;
+    int delayTime = 0;
     Uint64 frameStartTime = 64;
 
     bool isRunning = true;
