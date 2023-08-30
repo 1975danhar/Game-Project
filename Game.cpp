@@ -35,17 +35,18 @@ Game::~Game()
 void Game::run()
 {
     const int targetFrameRate = 60;
-    const float targetFrameTime = 1000.0f / targetFrameRate;
-    Uint32 prevTime = getCurrentMillis();
-    Uint32 frameTime = NULL;
-    Uint32 frameEndTime = NULL;
+    const double targetFrameTime = 1000.0 / targetFrameRate;
+    Uint64 prevTime = getCurrentMillis();
+    Uint64 frameTime = NULL;
+    Uint64 frameEndTime = NULL;
     int delayTime = NULL;
+    Uint64 frameStartTime = 64;
 
     bool isRunning = true;
 
     while (isRunning)
     {
-        Uint32 frameStartTime = getCurrentMillis();
+        frameStartTime = getCurrentMillis();
 
         inputManager.update();
         if (inputManager.isKeyPressed(SDLK_ESCAPE) || inputManager.doQuit())
@@ -57,7 +58,6 @@ void Game::run()
         frameTime = frameEndTime - frameStartTime;
 
         delayTime = static_cast<int>(targetFrameTime - frameTime);
-        std::cout << delayTime << std::endl;
         if(delayTime > 0)
         {
             SDL_Delay(delayTime);
@@ -66,7 +66,7 @@ void Game::run()
     
 }
 
-Uint32 Game::getCurrentMillis()
+Uint64 Game::getCurrentMillis()
 {
     return SDL_GetTicks64();
 }

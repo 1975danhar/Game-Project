@@ -12,7 +12,7 @@ public:
     ~Game();
 
     void run();
-    Uint32 getCurrentMillis();
+    Uint64 getCurrentMillis();
     
 private:
     SDL_Window *window;
