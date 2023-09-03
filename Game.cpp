@@ -41,7 +41,7 @@ void Game::run()
     {
         frameStartTime = getCurrentMillis();
 
-        inputManager.update();
+        inputManager.poll();
         if (inputManager.isKeyPressed(SDLK_ESCAPE) || inputManager.doQuit())
         {
             isRunning = false;

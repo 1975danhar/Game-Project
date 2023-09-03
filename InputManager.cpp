@@ -18,7 +18,7 @@ InputManager::~InputManager()
     SDL_QuitSubSystem(SDL_INIT_EVENTS);
 }
 
-void InputManager::update()
+void InputManager::poll()
 {
     SDL_Event event;
     while(SDL_PollEvent(&event))
@@ -27,7 +27,6 @@ void InputManager::update()
         {
         case SDL_KEYDOWN:
             keyStates[event.key.keysym.sym] = true;
-            std::cout << event.key.keysym.sym << std::flush;
             break;
         case SDL_QUIT:
             quit = true;

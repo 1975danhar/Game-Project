@@ -1,9 +1,9 @@
 #include "GameObject.h"
 
-GameObject::GameObject(SDL_Renderer *renderer, ResourceManager &resourceManager)
+GameObject::GameObject(SDL_Renderer *renderer, ResourceManager &rm)
 {
     this->renderer = renderer;
-    this->resourceManager = resourceManager;
+    resourceManager = rm;
 }
 
 GameObject::~GameObject()

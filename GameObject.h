@@ -6,7 +6,7 @@
 class GameObject
 {
     public:
-        GameObject(SDL_Renderer* renderer, ResourceManager& resourceManager);
+        GameObject(SDL_Renderer* renderer, ResourceManager& rm);
         virtual ~GameObject();
         virtual void update();
         virtual void render();

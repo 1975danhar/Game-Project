@@ -10,7 +10,7 @@ public:
     InputManager();
     ~InputManager();
 
-    void update();
+    void poll();
     bool isKeyPressed(SDL_Keycode key);
     bool doQuit();
 
