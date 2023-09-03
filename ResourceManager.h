@@ -10,13 +10,13 @@
 class ResourceManager
 {
     public:
-    ResourceManager(SDL_Renderer* renderer);
+    ResourceManager();
     ~ResourceManager();
-    SDL_Texture* loadTexture(const std::string& filePath);
-    SDL_Texture* loadTextureFromFile(const std::string& filePath);
+    SDL_Texture* loadTexture(SDL_Renderer* renderer, const std::string& filePath);
+    SDL_Texture* loadTextureFromFile(SDL_Renderer* renderer, const std::string& filePath);
 
     private:
-    SDL_Renderer* renderer;
+
     std::unordered_map<std::string, SDL_Texture *> textureCache;
 };
 

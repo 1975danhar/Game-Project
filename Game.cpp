@@ -17,13 +17,11 @@ Game::Game()
         return;
     }
     
-    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
-    resourceManager = ResourceManager(renderer);
+    SDL_Renderer* renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 Game::~Game()
 {
-    SDL_FreeSurface(window_surface);
     SDL_DestroyWindow(window);
 }
 
