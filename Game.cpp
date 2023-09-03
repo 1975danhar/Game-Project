@@ -16,14 +16,9 @@ Game::Game()
         std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
         return;
     }
-    window_surface = SDL_GetWindowSurface(window);
-
-    if (!window_surface)
-    {
-        std::cout << "Failed to get window's surface\n";
-        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
-        return;
-    }
+    
+    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
+    resourceManager = ResourceManager(renderer);
 }
 
 Game::~Game()

@@ -4,6 +4,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "InputManager.h"
+#include "ResourceManager.h"
 
 class Game
 {
@@ -17,11 +18,10 @@ public:
 private:
     SDL_Window *window;
     SDL_Renderer *renderer;
-    SDL_Surface *window_surface;
     bool isRunning;
     std::vector<GameObject*> gameObjects;
     InputManager inputManager;
-    
+    ResourceManager resourceManager;
 };
 
 #endif
