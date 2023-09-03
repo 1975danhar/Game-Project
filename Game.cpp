@@ -17,7 +17,7 @@ Game::Game()
         return;
     }
     
-    SDL_Renderer* renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 Game::~Game()
