@@ -11,7 +11,7 @@ class Game
 public:
     Game();
     ~Game();
-
+    void init();
     void run();
     Uint64 getCurrentMillis();
     
