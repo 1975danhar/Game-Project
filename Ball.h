@@ -6,11 +6,11 @@
 #include "InputManager.h"
 #include "ResourceManager.h"
 
-class Ball: private GameObject
+class Ball: public GameObject
 {
 public:
     Ball(SDL_Renderer* renderer, ResourceManager& rm);
-    ~Ball();
+    ~Ball() override;
 
     void update() override;
     void render() override;

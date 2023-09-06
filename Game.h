@@ -2,6 +2,7 @@
 #define _GAME_
 #include <SDL2/SDL.h>
 #include <vector>
+#include <memory>
 #include "GameObject.h"
 #include "InputManager.h"
 #include "ResourceManager.h"
@@ -12,15 +13,14 @@ class Game
 public:
     Game();
     ~Game();
-    void init();
     void run();
     Uint64 getCurrentMillis();
     
 private:
-    SDL_Window *window;
-    SDL_Renderer *renderer;
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
     bool isRunning;
-    std::vector<GameObject> gameObjects;
+    std::vector<std::unique_ptr<GameObject>> gameObjects;
     InputManager inputManager;
     ResourceManager resourceManager;
     void setup();

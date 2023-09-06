@@ -3,11 +3,33 @@
 
 Game::Game()
 {
+    
+    SDL_Init(SDL_INIT_VIDEO);
+
+    window = SDL_CreateWindow("Ball Game",
+                              SDL_WINDOWPOS_CENTERED,
+                              SDL_WINDOWPOS_CENTERED,
+                              680, 480, 0);
+    if (!window)
+    {
+        std::cout << "Failed to create window\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+        return;
+    }
+    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
+    if (!renderer)
+    {
+        std::cout << "Failed to create renderer\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+        return;
+    }
 }
 
 Game::~Game()
 {
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    SDL_Quit();
 }
 
 void Game::run()
@@ -22,8 +44,6 @@ void Game::run()
     int delayTime = 0;
     Uint64 frameStartTime = 64;
     bool isRunning = true;
-
-    init();
     
     while (isRunning)
     {
@@ -47,23 +67,6 @@ void Game::run()
     }
     
 }
-void init()
-{
-    SDL_Init(SDL_INIT_VIDEO);
-
-    window = SDL_CreateWindow("Ball Game",
-                              SDL_WINDOWPOS_CENTERED,
-                              SDL_WINDOWPOS_CENTERED,
-                              680, 480, 0);
-    if (!window)
-    {
-        std::cout << "Failed to create window\n";
-        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
-        return;
-    }
-    
-    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
-}
 
 Uint64 Game::getCurrentMillis()
 {
@@ -72,6 +75,5 @@ Uint64 Game::getCurrentMillis()
 
 void Game::setup()
 {
-    Ball ball = Ball(renderer, resourceManager);
-    gameObjects.push_back(ball);
+    gameObjects.push_back(std::make_unique<Ball>(renderer, resourceManager));
 }
