@@ -4,7 +4,6 @@
 
 Game::Game()
 {
-   
 }
 
 Game::~Game()
