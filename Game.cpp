@@ -50,7 +50,7 @@ void init()
 {
     SDL_Init(SDL_INIT_VIDEO);
 
-    window = SDL_CreateWindow("SDL2 Window",
+    window = SDL_CreateWindow("Ball Game",
                               SDL_WINDOWPOS_CENTERED,
                               SDL_WINDOWPOS_CENTERED,
                               680, 480, 0);
