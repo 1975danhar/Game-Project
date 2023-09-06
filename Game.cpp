@@ -3,20 +3,6 @@
 
 Game::Game()
 {
-    SDL_Init(SDL_INIT_VIDEO);
-
-    window = SDL_CreateWindow("SDL2 Window",
-                              SDL_WINDOWPOS_CENTERED,
-                              SDL_WINDOWPOS_CENTERED,
-                              680, 480, 0);
-    if (!window)
-    {
-        std::cout << "Failed to create window\n";
-        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
-        return;
-    }
-    
-    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 Game::~Game()
@@ -37,6 +23,8 @@ void Game::run()
     Uint64 frameStartTime = 64;
     bool isRunning = true;
 
+    init();
+    
     while (isRunning)
     {
         // Add function input
@@ -58,6 +46,23 @@ void Game::run()
         }
     }
     
+}
+void init()
+{
+    SDL_Init(SDL_INIT_VIDEO);
+
+    window = SDL_CreateWindow("Ball Game",
+                              SDL_WINDOWPOS_CENTERED,
+                              SDL_WINDOWPOS_CENTERED,
+                              680, 480, 0);
+    if (!window)
+    {
+        std::cout << "Failed to create window\n";
+        std::cout << "SDL2 Error: " << SDL_GetError() << "\n";
+        return;
+    }
+    
+    renderer = SDL_CreateRenderer (window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 Uint64 Game::getCurrentMillis()
