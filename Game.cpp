@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Game.h"
 
 
@@ -27,6 +26,8 @@ Game::~Game()
 
 void Game::run()
 {
+    // Add function Setup
+    
     const int targetFrameRate = 60;
     const double targetFrameTime = 1000.0 / targetFrameRate;
     Uint64 prevTime = getCurrentMillis();
@@ -34,11 +35,11 @@ void Game::run()
     Uint64 frameEndTime = 0;
     int delayTime = 0;
     Uint64 frameStartTime = 64;
-
     bool isRunning = true;
 
     while (isRunning)
     {
+        // Add function input
         frameStartTime = getCurrentMillis();
 
         inputManager.poll();
@@ -46,7 +47,7 @@ void Game::run()
         {
             isRunning = false;
         }
-       
+        // Add function update
         frameEndTime = getCurrentMillis();
         frameTime = frameEndTime - frameStartTime;
 
@@ -64,3 +65,8 @@ Uint64 Game::getCurrentMillis()
     return SDL_GetTicks64();
 }
 
+void Game::setup()
+{
+    Ball ball = Ball(renderer, resourceManager);
+    gameObjects.push_back(ball);
+}

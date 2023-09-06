@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "InputManager.h"
 #include "ResourceManager.h"
+#include "Ball.h"
 
 class Game
 {
@@ -19,9 +20,10 @@ private:
     SDL_Window *window;
     SDL_Renderer *renderer;
     bool isRunning;
-    std::vector<GameObject*> gameObjects;
+    std::vector<GameObject> gameObjects;
     InputManager inputManager;
     ResourceManager resourceManager;
+    void setup();
 };
 
 #endif
